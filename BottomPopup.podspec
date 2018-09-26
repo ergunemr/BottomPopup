@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/ergunemr/BottomPopup.git", :tag => "#{s.version}" }
 
-  s.source_files  = "BottomPopup", "BottomPopup/**/*.{swift}"
+  s.source_files  = "BottomPopup/BottomPopupController/*.{swift}"
 
   s.framework = "UIKit"
 
