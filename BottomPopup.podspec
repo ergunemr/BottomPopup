@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author             = { "Emre" => "ergunemr@itu.edu.tr" }
 
   s.platform = :ios
-  s.ios.deployment_target = '11.3'
+  s.ios.deployment_target = '10.0'
 
   s.source       = { :git => "https://github.com/ergunemr/BottomPopup.git", :tag => "#{s.version}" }
 
