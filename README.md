@@ -2,10 +2,14 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
+![](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
+![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
+
 ## What does BottomPopup do?
 It is a custom presentation style for view controllers to present any view controller with slide animation from bottom of the screen.
 
-## How it is look like ?
+## What does it look like ?
 Actually depends on your view controller, a real world example can be seen below;
 
 ![](https://media.giphy.com/media/9VvrEZ4McyF9cWgCtJ/giphy.gif)
