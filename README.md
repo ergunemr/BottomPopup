@@ -36,18 +36,24 @@ Then you can present your view controller with native **presentViewController:an
 
 Bottom popup comes with couple of customizable properties. Since your view controller subclass of BottomPopupViewController now, **you can override following methods in your view controller** to change behaviour;
 
-* _shouldPopupDismissInteractivelty() -> Bool_
+* **_shouldPopupDismissInteractivelty() -> Bool_**
+  
   Determines your popup should dismiss whether interactivelty or not. If it is set to yes, user can dismiss popup with pulling down it down. Default is YES
-* _getPopupHeight() -> CGFloat_
+* **_getPopupHeight() -> CGFloat_**
+  
   Height value. Default is 377 pt. For example you can return UIScreen.main.bounds.size.height to give it full screen height.
-* _getPopupTopCornerRadius() -> CGFloat_
+* **_getPopupTopCornerRadius() -> CGFloat_**
+  
   Corner radius of popup. Default is 10pt
-* _getPopupPresentDuration() -> Double_
+* **_getPopupPresentDuration() -> Double_**
+   
    Present animation duration. Default is 0.5 sec
-* _getPopupDismissDuration() -> Double_
+* **_getPopupDismissDuration() -> Double_**
+   
    Dismiss animation duration. Default is 0.5 sec
 
-   You can see how changing of these properties changes popup's behaviour below;
+   
+   You can see how changing of these properties changes popup's behaviour below.
    (Gifs are extracted from example project)
     
     ![](https://media.giphy.com/media/MRWZQ2PUS0NSeCytPx/giphy.gif) | ![](https://media.giphy.com/media/3bzmRH74e9wL6XKNnG/giphy.gif)
