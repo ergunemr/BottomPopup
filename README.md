@@ -42,7 +42,7 @@ Bottom popup comes with couple of customizable properties. Since your view contr
 
 * **_shouldPopupDismissInteractivelty() -> Bool_**
   
-  Determines your popup should dismiss whether interactivelty or not. If it is set to yes, user can dismiss popup with pulling down it down. Default is YES
+  Determines your popup should dismiss whether interactively or not. If it is set to yes, user can dismiss popup with pulling down it down. Default is YES
 * **_getPopupHeight() -> CGFloat_**
   
   Height value. Default is 377 pt. For example you can return UIScreen.main.bounds.size.height to give it full screen height.
