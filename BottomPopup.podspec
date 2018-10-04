@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BottomPopup"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "BottomPopup provides a popup-like presentation style to any view controller"
 
   s.homepage     = "https://github.com/ergunemr/BottomPopup"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => "MIT", :file => "LICENSE" }
 
-  s.author             = { "Emre" => "ergunemr@itu.edu.tr" }
+  s.author       = { "Emre" => "ergunemr@itu.edu.tr" }
 
   s.platform = :ios
   s.ios.deployment_target = '10.0'
