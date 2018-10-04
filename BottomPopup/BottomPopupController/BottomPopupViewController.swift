@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol BottomPopupAttributesDelegate: class {
+public protocol BottomPopupAttributesDelegate: class {
     func getPopupHeight() -> CGFloat
     func getPopupTopCornerRadius() -> CGFloat
     func getPopupPresentDuration() -> Double
@@ -16,7 +16,7 @@ protocol BottomPopupAttributesDelegate: class {
     func shouldPopupDismissInteractivelty() -> Bool
 }
 
-struct BottomPopupConstants {
+public struct BottomPopupConstants {
     static let kDefaultHeight = CGFloat(377.0)
     static let kDefaultTopCornerRadius = CGFloat(10.0)
     static let kDefaultPresentDuration = 0.5
@@ -24,7 +24,7 @@ struct BottomPopupConstants {
     static let dismissInteractively = true
 }
 
-class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
+public class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
     
     private var transitionHandler: BottomPopupTransitionHandler?
     
@@ -40,12 +40,13 @@ class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate
         initialize()
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
+        
         super.viewDidLoad()
         transitionHandler?.notifyViewLoaded()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         curveTopCorners()
@@ -69,23 +70,23 @@ class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate
     
     //MARK: BottomPopupAttributesDelegate Methods
     
-    func shouldPopupDismissInteractivelty() -> Bool {
+    public func shouldPopupDismissInteractivelty() -> Bool {
         return BottomPopupConstants.dismissInteractively
     }
     
-    func getPopupHeight() -> CGFloat {
+    public func getPopupHeight() -> CGFloat {
         return BottomPopupConstants.kDefaultHeight
     }
     
-    func getPopupTopCornerRadius() -> CGFloat {
+    public func getPopupTopCornerRadius() -> CGFloat {
         return BottomPopupConstants.kDefaultTopCornerRadius
     }
     
-    func getPopupPresentDuration() -> Double {
+    public func getPopupPresentDuration() -> Double {
         return BottomPopupConstants.kDefaultPresentDuration
     }
     
-    func getPopupDismissDuration() -> Double {
+    public func getPopupDismissDuration() -> Double {
         return BottomPopupConstants.kDefaultDismissDuration
     }
 }
