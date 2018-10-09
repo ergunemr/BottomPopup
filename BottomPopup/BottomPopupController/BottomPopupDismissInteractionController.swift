@@ -11,6 +11,7 @@ import UIKit
 class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransition {
     
     private let kMinPercentOfVisiblePartToCompleteAnimation = CGFloat(0.5)
+    private let kSwipeDownThreshold = CGFloat(1000)
     private weak var presentedViewController: BottomPopupViewController?
     private var currentPercent: CGFloat = 0
     private weak var transitioningDelegate: BottomPopupTransitionHandler?
@@ -22,8 +23,8 @@ class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransit
         preparePanGesture(in: presentedViewController?.view)
     }
     
-    private func finishAnimation() {
-        if currentPercent > kMinPercentOfVisiblePartToCompleteAnimation {
+    private func finishAnimation(withVelocity velocity: CGPoint) {
+        if currentPercent > kMinPercentOfVisiblePartToCompleteAnimation || velocity.y > kSwipeDownThreshold {
             finish()
         } else {
             cancel()
@@ -46,8 +47,9 @@ class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransit
         case .changed:
             update(currentPercent)
         default:
+            let velocity = pan.velocity(in: presentedViewController?.view)
             transitioningDelegate?.isInteractiveDismissStarted = false
-            finishAnimation()
+            finishAnimation(withVelocity: velocity)
         }
     }
 }
