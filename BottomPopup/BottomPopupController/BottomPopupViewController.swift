@@ -24,7 +24,7 @@ public struct BottomPopupConstants {
     static let dismissInteractively = true
 }
 
-public class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
+open class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
     
     private var transitionHandler: BottomPopupTransitionHandler?
     
@@ -34,19 +34,19 @@ public class BottomPopupViewController: UIViewController, BottomPopupAttributesD
         initialize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         initialize()
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         
         super.viewDidLoad()
         transitionHandler?.notifyViewLoaded()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         curveTopCorners()
@@ -70,23 +70,23 @@ public class BottomPopupViewController: UIViewController, BottomPopupAttributesD
     
     //MARK: BottomPopupAttributesDelegate Methods
     
-    public func shouldPopupDismissInteractivelty() -> Bool {
+    open func shouldPopupDismissInteractivelty() -> Bool {
         return BottomPopupConstants.dismissInteractively
     }
     
-    public func getPopupHeight() -> CGFloat {
+    open func getPopupHeight() -> CGFloat {
         return BottomPopupConstants.kDefaultHeight
     }
     
-    public func getPopupTopCornerRadius() -> CGFloat {
+    open func getPopupTopCornerRadius() -> CGFloat {
         return BottomPopupConstants.kDefaultTopCornerRadius
     }
     
-    public func getPopupPresentDuration() -> Double {
+    open func getPopupPresentDuration() -> Double {
         return BottomPopupConstants.kDefaultPresentDuration
     }
     
-    public func getPopupDismissDuration() -> Double {
+    open func getPopupDismissDuration() -> Double {
         return BottomPopupConstants.kDefaultDismissDuration
     }
 }
