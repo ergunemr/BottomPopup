@@ -56,6 +56,9 @@ Bottom popup comes with couple of customizable properties. Since your view contr
    
    Dismiss animation duration. Default is 0.5 sec
 
+* **_getDimmingViewAlpha() -> CGFloat_**
+   
+   Target alpha value of the black-colored dimming view after present animation. Default is 0.5
    
    You can see how changing of these properties changes popup's behaviour below.
    (Gifs are extracted from example project)
