@@ -11,8 +11,8 @@ import UIKit
 class BottomPopupPresentationController: UIPresentationController {
     
     fileprivate var dimmingView: UIView!
-    fileprivate var popupHeight: CGFloat
-    let kDimmingViewVisibleAlpha = CGFloat(0.8)
+    fileprivate let popupHeight: CGFloat
+    fileprivate let dimmingViewAlpha: CGFloat
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
@@ -22,17 +22,18 @@ class BottomPopupPresentationController: UIPresentationController {
     
     private func changeDimmingViewAlphaAlongWithAnimation(to alpha: CGFloat) {
         guard let coordinator = presentedViewController.transitionCoordinator else {
-            dimmingView.alpha = alpha
+            dimmingView.backgroundColor = UIColor.black.withAlphaComponent(alpha)
             return
         }
         
         coordinator.animate(alongsideTransition: { _ in
-            self.dimmingView.alpha = alpha
+            self.dimmingView.backgroundColor = UIColor.black.withAlphaComponent(alpha)
         })
     }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat) {
         self.popupHeight = height
+        self.dimmingViewAlpha = dimmingAlpha
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -43,7 +44,7 @@ class BottomPopupPresentationController: UIPresentationController {
     
     override func presentationTransitionWillBegin() {
         containerView?.insertSubview(dimmingView, at: 0)
-        changeDimmingViewAlphaAlongWithAnimation(to: kDimmingViewVisibleAlpha)
+        changeDimmingViewAlphaAlongWithAnimation(to: dimmingViewAlpha)
     }
     
     override func dismissalTransitionWillBegin() {
@@ -59,8 +60,7 @@ private extension BottomPopupPresentationController {
     func setupDimmingView() {
         dimmingView = UIView()
         dimmingView.frame = CGRect(origin: .zero, size: UIScreen.main.bounds.size)
-        dimmingView.backgroundColor = UIColor(white: 0.0, alpha: kDimmingViewVisibleAlpha)
-        dimmingView.alpha = 0.0
+        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         dimmingView.isUserInteractionEnabled = true

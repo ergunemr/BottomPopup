@@ -33,7 +33,7 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     
     //MARK: Specific animators
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: bottomPopupViewController.getPopupHeight())
+        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: bottomPopupViewController.getPopupHeight(), andDimmingViewAlpha: bottomPopupViewController.getDimmingViewAlpha())
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

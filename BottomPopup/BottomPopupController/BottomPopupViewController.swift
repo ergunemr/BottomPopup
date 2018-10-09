@@ -14,6 +14,7 @@ public protocol BottomPopupAttributesDelegate: class {
     func getPopupPresentDuration() -> Double
     func getPopupDismissDuration() -> Double
     func shouldPopupDismissInteractivelty() -> Bool
+    func getDimmingViewAlpha() -> CGFloat
 }
 
 public struct BottomPopupConstants {
@@ -22,6 +23,7 @@ public struct BottomPopupConstants {
     static let kDefaultPresentDuration = 0.5
     static let kDefaultDismissDuration = 0.5
     static let dismissInteractively = true
+    static let kDimmingViewDefaultAlphaValue: CGFloat = 0.5
 }
 
 open class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
@@ -88,5 +90,9 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     
     open func getPopupDismissDuration() -> Double {
         return BottomPopupConstants.kDefaultDismissDuration
+    }
+    
+    open func getDimmingViewAlpha() -> CGFloat {
+        return BottomPopupConstants.kDimmingViewDefaultAlphaValue
     }
 }
