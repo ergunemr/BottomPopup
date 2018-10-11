@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67534326216F893300CDD17D /* BottomPopupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67534325216F893300CDD17D /* BottomPopupNavigationController.swift */; };
 		67884CCA215BE49600CA0DEF /* BottomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC4215BE49600CA0DEF /* BottomPopupViewController.swift */; };
 		67884CCB215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC5215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift */; };
 		67884CCC215BE49600CA0DEF /* BottomPopupDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC6215BE49600CA0DEF /* BottomPopupDismissAnimator.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		67534325216F893300CDD17D /* BottomPopupNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupNavigationController.swift; sourceTree = "<group>"; };
 		67884CC4215BE49600CA0DEF /* BottomPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupViewController.swift; sourceTree = "<group>"; };
 		67884CC5215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupDismissInteractionController.swift; sourceTree = "<group>"; };
 		67884CC6215BE49600CA0DEF /* BottomPopupDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupDismissAnimator.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		67884CC3215BE49600CA0DEF /* BottomPopupController */ = {
 			isa = PBXGroup;
 			children = (
+				67534325216F893300CDD17D /* BottomPopupNavigationController.swift */,
 				67884CC4215BE49600CA0DEF /* BottomPopupViewController.swift */,
 				67884CC5215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift */,
 				67884CC6215BE49600CA0DEF /* BottomPopupDismissAnimator.swift */,
@@ -173,6 +176,7 @@
 				67884CCD215BE49600CA0DEF /* BottomPopupPresentAnimator.swift in Sources */,
 				67884CCC215BE49600CA0DEF /* BottomPopupDismissAnimator.swift in Sources */,
 				67CAC30B214EEA9E00DE0266 /* AppDelegate.swift in Sources */,
+				67534326216F893300CDD17D /* BottomPopupNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

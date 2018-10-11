@@ -8,8 +8,6 @@
 
 import UIKit
 
-typealias BottomPresentableViewController = BottomPopupAttributesDelegate & UIViewController
-
 class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDelegate {
     
     private var presentAnimator: BottomPopupPresentAnimator!
