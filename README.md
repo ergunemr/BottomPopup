@@ -2,7 +2,7 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
-![](https://img.shields.io/badge/version-0.3.0-blue.svg)
+![](https://img.shields.io/badge/version-0.3.1-blue.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
 
