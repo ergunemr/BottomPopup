@@ -10,9 +10,9 @@ import UIKit
 
 class BottomPopupDismissAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    private unowned var attributesOwner: BottomPopupViewController
+    private unowned var attributesOwner: BottomPresentableViewController
     
-    init(attributesOwner: BottomPopupViewController) {
+    init(attributesOwner: BottomPresentableViewController) {
         self.attributesOwner = attributesOwner
     }
     

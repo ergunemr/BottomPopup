@@ -57,7 +57,7 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(presentedAttributesOwnerViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }

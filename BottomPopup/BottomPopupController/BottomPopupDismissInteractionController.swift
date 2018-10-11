@@ -12,11 +12,11 @@ class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransit
     
     private let kMinPercentOfVisiblePartToCompleteAnimation = CGFloat(0.5)
     private let kSwipeDownThreshold = CGFloat(1000)
-    private weak var presentedViewController: BottomPopupViewController?
+    private weak var presentedViewController: BottomPresentableViewController?
     private var currentPercent: CGFloat = 0
     private weak var transitioningDelegate: BottomPopupTransitionHandler?
     
-    init(presentedViewController: BottomPopupViewController?) {
+    init(presentedViewController: BottomPresentableViewController?) {
         self.presentedViewController = presentedViewController
         self.transitioningDelegate = presentedViewController?.transitioningDelegate as? BottomPopupTransitionHandler
         super.init()
