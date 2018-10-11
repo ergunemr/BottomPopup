@@ -2,7 +2,7 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
-![](https://img.shields.io/badge/version-0.2.1-blue.svg)
+![](https://img.shields.io/badge/version-0.3.0-blue.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
 
@@ -32,9 +32,13 @@ Download the project, just drag and drop classes under **BottomPopupController**
 
 ## How is it used?
 
-After install, simply make your view controller subclass of **BottomPopupViewController.** Congratulations, your view controller is ready to show 🎉  
+After install, simply make your view controller subclass of **BottomPopupViewController.**  
 
-Then you can present your view controller with native **presentViewController:animated:completion:** method, bottom popup controller will handle rest.
+For navigation controllers, it works exactly in same way, make your navigation controller subclass of **BottomPopupNavigationController.**
+
+Congratulations, your view controller is ready to show 🎉
+
+Then you can present your controller with native **presentViewController:animated:completion:** method, bottom popup controller will handle rest.
 
 ## Customization
 
@@ -63,7 +67,9 @@ Bottom popup comes with couple of customizable properties. Since your view contr
    You can see how changing of these properties changes popup's behaviour below.
    (Gifs are extracted from example project)
     
-    ![](https://media.giphy.com/media/MRWZQ2PUS0NSeCytPx/giphy.gif) | ![](https://media.giphy.com/media/3bzmRH74e9wL6XKNnG/giphy.gif)
+    UIViewController  | UINavigationController
+    --- | ---
+    ![](https://media.giphy.com/media/kSbDw36fJUmbDnbcoj/giphy.gif) | ![](https://media.giphy.com/media/kEEduYnDbfS9eC9pXF/giphy.gif)
 
  ## Questions or Advices
  Just send me an email (ergunemr@gmail.com)

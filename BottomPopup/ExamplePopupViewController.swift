@@ -16,13 +16,6 @@ class ExamplePopupViewController: BottomPopupViewController {
     var dismissDuration: Double?
     var shouldDismissInteractivelty: Bool?
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-    
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

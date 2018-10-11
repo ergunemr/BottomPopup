@@ -35,8 +35,4 @@ class ExampleNavigationController: BottomPopupNavigationController {
     override func shouldPopupDismissInteractivelty() -> Bool {
         return shouldDismissInteractivelty ?? true
     }
-    
-    @IBAction func dismissButtonTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
 }
