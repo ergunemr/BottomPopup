@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
     
     let kHeightMaxValue: CGFloat = 600
-    let kTopCornerRadiusMaxValue: CGFloat = 70
+    let kTopCornerRadiusMaxValue: CGFloat = 35
     let kPresentDurationMaxValue = 3.0
     let kDismissDurationMaxValue = 3.0
 
@@ -78,7 +78,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func showButtonTapped(_ sender: UIButton) {
+    @IBAction func showViewControllerTapped(_ sender: UIButton) {
         guard let popupVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? ExamplePopupViewController else { return }
         popupVC.height = height
         popupVC.topCornerRadius = topCornerRadius
@@ -86,6 +86,16 @@ class ViewController: UIViewController {
         popupVC.dismissDuration = dismissDuration
         popupVC.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
         present(popupVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func showNavigationControllerTapped(_ sender: UIButton) {
+        guard let popupNavController = storyboard?.instantiateViewController(withIdentifier: "customNavController") as? ExampleNavigationController else { return }
+        popupNavController.height = height
+        popupNavController.topCornerRadius = topCornerRadius
+        popupNavController.presentDuration = presentDuration
+        popupNavController.dismissDuration = dismissDuration
+        popupNavController.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
+        present(popupNavController, animated: true, completion: nil)
     }
 }
 

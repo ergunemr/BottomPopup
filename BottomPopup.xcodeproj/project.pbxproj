@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		67534326216F893300CDD17D /* BottomPopupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67534325216F893300CDD17D /* BottomPopupNavigationController.swift */; };
+		67534328216F900900CDD17D /* ExampleNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67534327216F900900CDD17D /* ExampleNavigationController.swift */; };
 		67884CCA215BE49600CA0DEF /* BottomPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC4215BE49600CA0DEF /* BottomPopupViewController.swift */; };
 		67884CCB215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC5215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift */; };
 		67884CCC215BE49600CA0DEF /* BottomPopupDismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67884CC6215BE49600CA0DEF /* BottomPopupDismissAnimator.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		67534325216F893300CDD17D /* BottomPopupNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupNavigationController.swift; sourceTree = "<group>"; };
+		67534327216F900900CDD17D /* ExampleNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleNavigationController.swift; sourceTree = "<group>"; };
 		67884CC4215BE49600CA0DEF /* BottomPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupViewController.swift; sourceTree = "<group>"; };
 		67884CC5215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupDismissInteractionController.swift; sourceTree = "<group>"; };
 		67884CC6215BE49600CA0DEF /* BottomPopupDismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomPopupDismissAnimator.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				67884CC3215BE49600CA0DEF /* BottomPopupController */,
 				67CAC30C214EEA9E00DE0266 /* ViewController.swift */,
 				67CAC32C214EFB6900DE0266 /* ExamplePopupViewController.swift */,
+				67534327216F900900CDD17D /* ExampleNavigationController.swift */,
 				67CAC30E214EEA9E00DE0266 /* Main.storyboard */,
 				67CAC311214EEA9F00DE0266 /* Assets.xcassets */,
 				67CAC313214EEA9F00DE0266 /* LaunchScreen.storyboard */,
@@ -170,6 +173,7 @@
 				67CAC30D214EEA9E00DE0266 /* ViewController.swift in Sources */,
 				67CAC32D214EFB6900DE0266 /* ExamplePopupViewController.swift in Sources */,
 				67884CCF215BE49600CA0DEF /* BottomPopupPresentationController.swift in Sources */,
+				67534328216F900900CDD17D /* ExampleNavigationController.swift in Sources */,
 				67884CCB215BE49600CA0DEF /* BottomPopupDismissInteractionController.swift in Sources */,
 				67884CCE215BE49600CA0DEF /* BottomPopupTransitionHandler.swift in Sources */,
 				67884CCA215BE49600CA0DEF /* BottomPopupViewController.swift in Sources */,
