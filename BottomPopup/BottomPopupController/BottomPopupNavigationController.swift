@@ -12,6 +12,8 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     
     private var transitionHandler: BottomPopupTransitionHandler?
     
+    // MARK: Initializations
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -25,8 +27,8 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     }
     
     open override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
         transitionHandler?.notifyViewLoaded()
     }
     
