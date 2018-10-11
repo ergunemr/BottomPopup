@@ -10,9 +10,9 @@
 It is a custom presentation style for view controllers to present any view controller with slide animation from bottom of the screen.
 
 ## What does it look like ?
-Actually depends on your view controller, a real world example can be seen below;
+Actually depends on your view controller, a real world examples can be seen below;
 
-![](https://media.giphy.com/media/9VvrEZ4McyF9cWgCtJ/giphy.gif)
+![](https://media.giphy.com/media/Cjtdn4GdOy4F80voe0/giphy.gif) | ![](https://media.giphy.com/media/58FNuaDbPyyc8IdRtB/giphy.gif)
 
 ## How is it set up?
 
