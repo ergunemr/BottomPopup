@@ -14,11 +14,13 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     private var dismissAnimator: BottomPopupDismissAnimator!
     private var interactionController: BottomPopupDismissInteractionController?
     private unowned var popupViewController: BottomPresentableViewController
+    fileprivate weak var popupDelegate: BottomPopupDelegate?
     
     var isInteractiveDismissStarted = false
     
-    init(popupViewController: BottomPresentableViewController) {
+    init(popupViewController: BottomPresentableViewController, popupDelegate: BottomPopupDelegate?) {
         self.popupViewController = popupViewController
+        self.popupDelegate = popupDelegate
         
         presentAnimator = BottomPopupPresentAnimator(attributesOwner: popupViewController)
         dismissAnimator = BottomPopupDismissAnimator(attributesOwner: popupViewController)
@@ -28,6 +30,7 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     func notifyViewLoaded() {
         if popupViewController.shouldPopupDismissInteractivelty() {
             interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController)
+            interactionController?.delegate = self
         }
     }
     
@@ -46,5 +49,11 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return isInteractiveDismissStarted ? interactionController : nil
+    }
+}
+
+extension BottomPopupTransitionHandler: BottomPopupDismissInteractionControllerDelegate {
+    func dismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat) {
+        popupDelegate?.bottomPopupDismissInteractionPercentChanged(from: oldValue, to: newValue)
     }
 }

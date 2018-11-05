@@ -11,6 +11,7 @@ import UIKit
 open class BottomPopupViewController: UIViewController, BottomPopupAttributesDelegate {
     
     private var transitionHandler: BottomPopupTransitionHandler?
+    open weak var popupDelegate: BottomPopupDelegate?
     
     // MARK: Initializations
     
@@ -30,18 +31,38 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
         
         super.viewDidLoad()
         transitionHandler?.notifyViewLoaded()
+        popupDelegate?.bottomPopupViewLoaded()
     }
     
-    override open func viewWillAppear(_ animated: Bool) {
+    open override  func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         curveTopCorners()
+        popupDelegate?.bottomPopupWillAppear()
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        popupDelegate?.bottomPopupDidAppear()
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        popupDelegate?.bottomPopupWillDismiss()
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        popupDelegate?.bottomPopupDidDismiss()
     }
     
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, popupDelegate: popupDelegate)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }

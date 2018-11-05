@@ -8,13 +8,23 @@
 
 import UIKit
 
+protocol BottomPopupDismissInteractionControllerDelegate: class {
+    func dismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat)
+}
+
 class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransition {
     
     private let kMinPercentOfVisiblePartToCompleteAnimation = CGFloat(0.5)
     private let kSwipeDownThreshold = CGFloat(1000)
     private weak var presentedViewController: BottomPresentableViewController?
-    private var currentPercent: CGFloat = 0
     private weak var transitioningDelegate: BottomPopupTransitionHandler?
+    weak var delegate: BottomPopupDismissInteractionControllerDelegate?
+    
+    private var currentPercent: CGFloat = 0 {
+        didSet {
+            delegate?.dismissInteractionPercentChanged(from: oldValue, to: currentPercent)
+        }
+    }
     
     init(presentedViewController: BottomPresentableViewController?) {
         self.presentedViewController = presentedViewController

@@ -1,5 +1,5 @@
 //
-//  BottomPopupConstants.swift
+//  BottomPopupUtils.swift
 //  BottomPopup
 //
 //  Created by Emre on 11.10.2018.
@@ -9,6 +9,24 @@
 import UIKit
 
 typealias BottomPresentableViewController = BottomPopupAttributesDelegate & UIViewController
+
+public protocol BottomPopupDelegate: class {
+    func bottomPopupViewLoaded()
+    func bottomPopupWillAppear()
+    func bottomPopupDidAppear()
+    func bottomPopupWillDismiss()
+    func bottomPopupDidDismiss()
+    func bottomPopupDismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat)
+}
+
+extension BottomPopupDelegate {
+    func bottomPopupViewLoaded() { }
+    func bottomPopupWillAppear() { }
+    func bottomPopupDidAppear() { }
+    func bottomPopupWillDismiss() { }
+    func bottomPopupDidDismiss() { }
+    func bottomPopupDismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat) { }
+}
 
 public protocol BottomPopupAttributesDelegate: class {
     func getPopupHeight() -> CGFloat

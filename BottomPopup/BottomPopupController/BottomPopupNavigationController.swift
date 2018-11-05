@@ -11,10 +11,11 @@ import UIKit
 open class BottomPopupNavigationController: UINavigationController, BottomPopupAttributesDelegate {
     
     private var transitionHandler: BottomPopupTransitionHandler?
+    open weak var bottomPopupDelegate: BottomPopupDelegate?
     
     // MARK: Initializations
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override public init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
         initialize()
@@ -30,18 +31,38 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         super.viewDidLoad()
         
         transitionHandler?.notifyViewLoaded()
+        bottomPopupDelegate?.bottomPopupViewLoaded()
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         curveTopCorners()
+        bottomPopupDelegate?.bottomPopupWillAppear()
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        bottomPopupDelegate?.bottomPopupDidAppear()
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        bottomPopupDelegate?.bottomPopupWillDismiss()
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        bottomPopupDelegate?.bottomPopupDidDismiss()
     }
     
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, popupDelegate: bottomPopupDelegate)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }

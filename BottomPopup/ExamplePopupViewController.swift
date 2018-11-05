@@ -20,7 +20,7 @@ class ExamplePopupViewController: BottomPopupViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // Bottom popup delegate methods
+    // Bottom popup attribute methods
     // You can override the desired method to change appearance
     
     override func getPopupHeight() -> CGFloat {
