@@ -2,7 +2,7 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
-![](https://img.shields.io/badge/version-0.3.1-blue.svg)
+![](https://img.shields.io/badge/version-0.4.0-blue.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
 
@@ -70,6 +70,24 @@ Bottom popup comes with couple of customizable properties. Since your view contr
     UIViewController  | UINavigationController
     --- | ---
     ![](https://media.giphy.com/media/kSbDw36fJUmbDnbcoj/giphy.gif) | ![](https://media.giphy.com/media/kEEduYnDbfS9eC9pXF/giphy.gif)
+
+## Delegate
+
+If you want to track popup lifecycle or current dismiss interaction percent, you can set popupDelegate;
+
+```
+popupVC.popupDelegate = self
+```
+
+Methods;
+```
+func bottomPopupViewLoaded()
+func bottomPopupWillAppear()
+func bottomPopupDidAppear()
+func bottomPopupWillDismiss()
+func bottomPopupDidDismiss()
+func bottomPopupDismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat)
+```
 
  ## Questions or Advices
  Just send me an email (ergunemr@gmail.com)
