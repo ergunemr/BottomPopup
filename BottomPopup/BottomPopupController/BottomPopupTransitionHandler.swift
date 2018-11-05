@@ -18,16 +18,16 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     
     var isInteractiveDismissStarted = false
     
-    init(popupViewController: BottomPresentableViewController, popupDelegate: BottomPopupDelegate?) {
+    init(popupViewController: BottomPresentableViewController) {
         self.popupViewController = popupViewController
-        self.popupDelegate = popupDelegate
         
         presentAnimator = BottomPopupPresentAnimator(attributesOwner: popupViewController)
         dismissAnimator = BottomPopupDismissAnimator(attributesOwner: popupViewController)
     }
     
     //MARK: Public
-    func notifyViewLoaded() {
+    func notifyViewLoaded(withPopupDelegate delegate: BottomPopupDelegate?) {
+        self.popupDelegate = delegate
         if popupViewController.shouldPopupDismissInteractivelty() {
             interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController)
             interactionController?.delegate = self

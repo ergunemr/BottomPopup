@@ -85,6 +85,7 @@ class ViewController: UIViewController {
         popupVC.presentDuration = presentDuration
         popupVC.dismissDuration = dismissDuration
         popupVC.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
+        popupVC.popupDelegate = self
         present(popupVC, animated: true, completion: nil)
     }
     
@@ -99,3 +100,29 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: BottomPopupDelegate {
+    
+    func bottomPopupViewLoaded() {
+        print("bottomPopupViewLoaded")
+    }
+    
+    func bottomPopupWillAppear() {
+        print("bottomPopupWillAppear")
+    }
+    
+    func bottomPopupDidAppear() {
+        print("bottomPopupDidAppear")
+    }
+    
+    func bottomPopupWillDismiss() {
+        print("bottomPopupWillDismiss")
+    }
+    
+    func bottomPopupDidDismiss() {
+        print("bottomPopupDidDismiss")
+    }
+    
+    func bottomPopupDismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat) {
+        print("bottomPopupDismissInteractionPercentChanged fromValue: \(oldValue) to: \(newValue)")
+    }
+}

@@ -11,7 +11,7 @@ import UIKit
 open class BottomPopupNavigationController: UINavigationController, BottomPopupAttributesDelegate {
     
     private var transitionHandler: BottomPopupTransitionHandler?
-    open weak var bottomPopupDelegate: BottomPopupDelegate?
+    open weak var popupDelegate: BottomPopupDelegate?
     
     // MARK: Initializations
     
@@ -30,39 +30,39 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     open override func viewDidLoad() {
         super.viewDidLoad()
         
-        transitionHandler?.notifyViewLoaded()
-        bottomPopupDelegate?.bottomPopupViewLoaded()
+        transitionHandler?.notifyViewLoaded(withPopupDelegate: popupDelegate)
+        popupDelegate?.bottomPopupViewLoaded()
     }
     
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         curveTopCorners()
-        bottomPopupDelegate?.bottomPopupWillAppear()
+        popupDelegate?.bottomPopupWillAppear()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        bottomPopupDelegate?.bottomPopupDidAppear()
+        popupDelegate?.bottomPopupDidAppear()
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        bottomPopupDelegate?.bottomPopupWillDismiss()
+        popupDelegate?.bottomPopupWillDismiss()
     }
     
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        bottomPopupDelegate?.bottomPopupDidDismiss()
+        popupDelegate?.bottomPopupDidDismiss()
     }
     
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, popupDelegate: bottomPopupDelegate)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }

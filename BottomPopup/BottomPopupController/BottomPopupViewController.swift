@@ -30,7 +30,7 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     open override func viewDidLoad() {
         
         super.viewDidLoad()
-        transitionHandler?.notifyViewLoaded()
+        transitionHandler?.notifyViewLoaded(withPopupDelegate: popupDelegate)
         popupDelegate?.bottomPopupViewLoaded()
     }
     
@@ -62,7 +62,7 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, popupDelegate: popupDelegate)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }
