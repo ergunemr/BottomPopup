@@ -19,7 +19,7 @@ public protocol BottomPopupDelegate: class {
     func bottomPopupDismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat)
 }
 
-extension BottomPopupDelegate {
+public extension BottomPopupDelegate {
     func bottomPopupViewLoaded() { }
     func bottomPopupWillAppear() { }
     func bottomPopupDidAppear() { }
