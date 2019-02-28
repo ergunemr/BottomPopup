@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "BottomPopup"
-  s.version      = "0.4.1"
+  s.version      = "0.5.0"
   s.summary      = "BottomPopup provides a popup-like presentation style to any view controller"
 
   s.homepage     = "https://github.com/ergunemr/BottomPopup"
