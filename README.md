@@ -2,8 +2,9 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
-![](https://img.shields.io/badge/version-0.4.1-blue.svg)
+![](https://img.shields.io/badge/version-0.5.0-blue.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
+![](https://img.shields.io/badge/swift-4.2-orange.svg)
 ![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
 
 ## What does BottomPopup do?
