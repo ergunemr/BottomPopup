@@ -15,11 +15,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var presentDurationSlider: UISlider!
     @IBOutlet weak var dismissDurationSlider: UISlider!
     @IBOutlet weak var dismissInteractivelySwitch: UISwitch!
+    @IBOutlet weak var dismissOnTapSwitch: UISwitch!
     
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var topCornerRadiusLabel: UILabel!
     @IBOutlet weak var presentDurationLabel: UILabel!
     @IBOutlet weak var dismissDurationLabel: UILabel!
+    @IBOutlet weak var dismissOnTapLabel: UILabel!
     
     var height: CGFloat = 300 {
         didSet {
@@ -85,6 +87,7 @@ class ViewController: UIViewController {
         popupVC.presentDuration = presentDuration
         popupVC.dismissDuration = dismissDuration
         popupVC.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
+        popupVC.shouldDismissOnTap = dismissOnTapSwitch.isOn
         popupVC.popupDelegate = self
         present(popupVC, animated: true, completion: nil)
     }
@@ -96,6 +99,7 @@ class ViewController: UIViewController {
         popupNavController.presentDuration = presentDuration
         popupNavController.dismissDuration = dismissDuration
         popupNavController.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
+        popupNavController.shouldDismissOnTap = dismissOnTapSwitch.isOn
         present(popupNavController, animated: true, completion: nil)
     }
 }

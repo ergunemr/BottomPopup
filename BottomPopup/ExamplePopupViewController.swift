@@ -15,6 +15,7 @@ class ExamplePopupViewController: BottomPopupViewController {
     var presentDuration: Double?
     var dismissDuration: Double?
     var shouldDismissInteractivelty: Bool?
+    var shouldDismissOnTap: Bool?
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -41,5 +42,9 @@ class ExamplePopupViewController: BottomPopupViewController {
     
     override func shouldPopupDismissInteractivelty() -> Bool {
         return shouldDismissInteractivelty ?? true
+    }
+
+    override func shouldDimissOnTap() -> Bool {
+        return shouldDismissOnTap ?? true
     }
 }

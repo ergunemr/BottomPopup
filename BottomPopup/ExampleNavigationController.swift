@@ -15,6 +15,7 @@ class ExampleNavigationController: BottomPopupNavigationController {
     var presentDuration: Double?
     var dismissDuration: Double?
     var shouldDismissInteractivelty: Bool?
+    var shouldDismissOnTap: Bool?
     
     override func getPopupHeight() -> CGFloat {
         return height ?? CGFloat(300)
@@ -34,5 +35,9 @@ class ExampleNavigationController: BottomPopupNavigationController {
     
     override func shouldPopupDismissInteractivelty() -> Bool {
         return shouldDismissInteractivelty ?? true
+    }
+
+    override func shouldDimissOnTap() -> Bool {
+        return shouldDismissOnTap ?? true
     }
 }

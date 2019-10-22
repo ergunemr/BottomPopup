@@ -80,6 +80,10 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     open func shouldPopupDismissInteractivelty() -> Bool {
         return BottomPopupConstants.dismissInteractively
     }
+
+    open func shouldDimissOnTap() -> Bool {
+        return BottomPopupConstants.dismissOnTapEnabled
+    }
     
     open func getPopupHeight() -> CGFloat {
         return BottomPopupConstants.kDefaultHeight
