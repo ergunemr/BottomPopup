@@ -13,6 +13,7 @@ class BottomPopupPresentationController: UIPresentationController {
     fileprivate var dimmingView: UIView!
     fileprivate let popupHeight: CGFloat
     fileprivate let dimmingViewAlpha: CGFloat
+    fileprivate let dismissOnTapEnabled: Bool
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
@@ -31,9 +32,10 @@ class BottomPopupPresentationController: UIPresentationController {
         })
     }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat, dismissOnTapEnabled: Bool = true) {
         self.popupHeight = height
         self.dimmingViewAlpha = dimmingAlpha
+        self.dismissOnTapEnabled = dismissOnTapEnabled
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -52,6 +54,7 @@ class BottomPopupPresentationController: UIPresentationController {
     }
     
     @objc fileprivate func handleTap(_ tap: UITapGestureRecognizer) {
+        guard dismissOnTapEnabled == true else { return }
         presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
