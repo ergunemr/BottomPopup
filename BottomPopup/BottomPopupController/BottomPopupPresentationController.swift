@@ -51,11 +51,11 @@ class BottomPopupPresentationController: UIPresentationController {
         changeDimmingViewAlphaAlongWithAnimation(to: 0)
     }
     
-    @objc fileprivate func handleTap(_ tap: UITapGestureRecognizer) {
+    @objc private func handleTap(_ tap: UITapGestureRecognizer) {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
     
-    @objc fileprivate func handleSwipe(_ swipe: UISwipeGestureRecognizer) {
+    @objc private func handleSwipe(_ swipe: UISwipeGestureRecognizer) {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
 }
