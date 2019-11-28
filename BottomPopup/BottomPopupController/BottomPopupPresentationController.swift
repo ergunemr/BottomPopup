@@ -54,6 +54,10 @@ class BottomPopupPresentationController: UIPresentationController {
     @objc fileprivate func handleTap(_ tap: UITapGestureRecognizer) {
         presentedViewController.dismiss(animated: true, completion: nil)
     }
+    
+    @objc fileprivate func handleSwipe(_ swipe: UISwipeGestureRecognizer) {
+        presentedViewController.dismiss(animated: true, completion: nil)
+    }
 }
 
 private extension BottomPopupPresentationController {
@@ -61,9 +65,10 @@ private extension BottomPopupPresentationController {
         dimmingView = UIView()
         dimmingView.frame = CGRect(origin: .zero, size: UIScreen.main.bounds.size)
         dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0)
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
+        swipeGesture.direction = .down
         dimmingView.isUserInteractionEnabled = true
-        dimmingView.addGestureRecognizer(tapGesture)
+        [tapGesture, swipeGesture].forEach { dimmingView.addGestureRecognizer($0) }
     }
 }
