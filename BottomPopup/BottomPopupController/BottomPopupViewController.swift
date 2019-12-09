@@ -32,6 +32,7 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
         super.viewDidLoad()
         transitionHandler?.notifyViewLoaded(withPopupDelegate: popupDelegate)
         popupDelegate?.bottomPopupViewLoaded()
+        self.view.accessibilityIdentifier = "bottomPopupView"
     }
     
     open override  func viewWillAppear(_ animated: Bool) {
