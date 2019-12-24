@@ -62,13 +62,13 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, position: getPosition())
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }
     
     private func curveTopCorners() {
-        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: getPopupTopCornerRadius(), height: 0))
+        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.bottomRight, .bottomLeft], cornerRadii: CGSize(width: 0, height: getPopupTopCornerRadius()))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.view.bounds
         maskLayer.path = path.cgPath
@@ -92,12 +92,19 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     open func getPopupPresentDuration() -> Double {
         return BottomPopupConstants.kDefaultPresentDuration
     }
-    
+    open func getPosition() -> PopupPoistion {
+        .bottom
+    }
     open func getPopupDismissDuration() -> Double {
         return BottomPopupConstants.kDefaultDismissDuration
     }
     
     open func getDimmingViewAlpha() -> CGFloat {
         return BottomPopupConstants.kDimmingViewDefaultAlphaValue
+    }
+}
+extension BottomPopupViewController {
+    func setupHeight(to height: CGFloat) {
+        transitionHandler?.setHeight(to: height)
     }
 }

@@ -9,7 +9,10 @@
 import UIKit
 
 typealias BottomPresentableViewController = BottomPopupAttributesDelegate & UIViewController
-
+public enum PopupPoistion {
+    case top
+    case bottom
+}
 public protocol BottomPopupDelegate: class {
     func bottomPopupViewLoaded()
     func bottomPopupWillAppear()
@@ -35,6 +38,7 @@ public protocol BottomPopupAttributesDelegate: class {
     func getPopupDismissDuration() -> Double
     func shouldPopupDismissInteractivelty() -> Bool
     func getDimmingViewAlpha() -> CGFloat
+    func getPosition() -> PopupPoistion
 }
 
 public struct BottomPopupConstants {

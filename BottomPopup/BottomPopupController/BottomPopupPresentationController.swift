@@ -11,12 +11,18 @@ import UIKit
 class BottomPopupPresentationController: UIPresentationController {
     
     fileprivate var dimmingView: UIView!
-    fileprivate let popupHeight: CGFloat
+    fileprivate var popupHeight: CGFloat
+    fileprivate let position: PopupPoistion
     fileprivate let dimmingViewAlpha: CGFloat
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
-            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
+            switch position {
+            case .top:
+                return CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
+            case .bottom:
+                return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
+            }
         }
     }
     
@@ -31,9 +37,10 @@ class BottomPopupPresentationController: UIPresentationController {
         })
     }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat, position: PopupPoistion) {
         self.popupHeight = height
         self.dimmingViewAlpha = dimmingAlpha
+        self.position = position
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -65,5 +72,12 @@ private extension BottomPopupPresentationController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         dimmingView.isUserInteractionEnabled = true
         dimmingView.addGestureRecognizer(tapGesture)
+    }
+}
+//MARK: - dynamic height based on autolayout -
+extension BottomPopupPresentationController {
+    func setHeight(to height: CGFloat) {
+        self.popupHeight = height
+        containerViewWillLayoutSubviews()
     }
 }

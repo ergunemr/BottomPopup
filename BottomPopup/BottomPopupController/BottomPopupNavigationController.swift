@@ -62,7 +62,7 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, position: getPosition())
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }
@@ -96,8 +96,16 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     open func getPopupDismissDuration() -> Double {
         return BottomPopupConstants.kDefaultDismissDuration
     }
+    open func getPosition() -> PopupPoistion {
+        .bottom
+    }
     
     open func getDimmingViewAlpha() -> CGFloat {
         return BottomPopupConstants.kDimmingViewDefaultAlphaValue
+    }
+}
+extension BottomPopupNavigationController {
+    func setupHeight(to height: CGFloat) {
+        transitionHandler?.setHeight(to: height)
     }
 }
