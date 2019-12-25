@@ -15,26 +15,27 @@ protocol BottomPopupDismissInteractionControllerDelegate: class {
 class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransition {
     
     private let kMinPercentOfVisiblePartToCompleteAnimation = CGFloat(0.5)
-    private let kSwipeDownThreshold = CGFloat(1000)
+    private let kSwipeThreshold = CGFloat(1000)
     private weak var presentedViewController: BottomPresentableViewController?
     private weak var transitioningDelegate: BottomPopupTransitionHandler?
     weak var delegate: BottomPopupDismissInteractionControllerDelegate?
-    
+    private var position: PopupPoistion
     private var currentPercent: CGFloat = 0 {
         didSet {
             delegate?.dismissInteractionPercentChanged(from: oldValue, to: currentPercent)
         }
     }
     
-    init(presentedViewController: BottomPresentableViewController?) {
+    init(presentedViewController: BottomPresentableViewController?, position: PopupPoistion) {
         self.presentedViewController = presentedViewController
+        self.position = position
         self.transitioningDelegate = presentedViewController?.transitioningDelegate as? BottomPopupTransitionHandler
         super.init()
         preparePanGesture(in: presentedViewController?.view)
     }
     
     private func finishAnimation(withVelocity velocity: CGPoint) {
-        if currentPercent > kMinPercentOfVisiblePartToCompleteAnimation || velocity.y > kSwipeDownThreshold {
+        if currentPercent > kMinPercentOfVisiblePartToCompleteAnimation || velocity.y > kSwipeThreshold {
             finish()
         } else {
             cancel()
@@ -48,7 +49,12 @@ class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransit
     
     @objc private func handlePanGesture(_ pan: UIPanGestureRecognizer) {
         let translationY = pan.translation(in: presentedViewController?.view).y
-        currentPercent = min(max(translationY/(presentedViewController?.view.frame.size.height ?? 0), 0), 1)
+        switch position {
+        case .top:
+            currentPercent = min(max(-translationY/(presentedViewController?.view.frame.size.height ?? 0), 0), 1)
+        case .bottom:
+            currentPercent = min(max(translationY/(presentedViewController?.view.frame.size.height ?? 0), 0), 1)
+        }
         
         switch pan.state {
         case .began:

@@ -15,12 +15,14 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     private var interactionController: BottomPopupDismissInteractionController?
     private unowned var popupViewController: BottomPresentableViewController
     fileprivate weak var popupDelegate: BottomPopupDelegate?
+    private let position: PopupPoistion
     
     var isInteractiveDismissStarted = false
+    var bottomPopupPresentationController: BottomPopupPresentationController?
     
-    init(popupViewController: BottomPresentableViewController) {
+    init(popupViewController: BottomPresentableViewController, position: PopupPoistion) {
         self.popupViewController = popupViewController
-        
+        self.position = position
         presentAnimator = BottomPopupPresentAnimator(attributesOwner: popupViewController)
         dismissAnimator = BottomPopupDismissAnimator(attributesOwner: popupViewController)
     }
@@ -29,14 +31,15 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     func notifyViewLoaded(withPopupDelegate delegate: BottomPopupDelegate?) {
         self.popupDelegate = delegate
         if popupViewController.shouldPopupDismissInteractivelty() {
-            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController)
+            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController, position: position)
             interactionController?.delegate = self
         }
     }
     
     //MARK: Specific animators
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: popupViewController.getPopupHeight(), andDimmingViewAlpha: popupViewController.getDimmingViewAlpha())
+        bottomPopupPresentationController = BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: popupViewController.getPopupHeight(), andDimmingViewAlpha: popupViewController.getDimmingViewAlpha(), position: position)
+        return bottomPopupPresentationController
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -55,5 +58,10 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
 extension BottomPopupTransitionHandler: BottomPopupDismissInteractionControllerDelegate {
     func dismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat) {
         popupDelegate?.bottomPopupDismissInteractionPercentChanged(from: oldValue, to: newValue)
+    }
+}
+extension BottomPopupTransitionHandler {
+    func setHeight(to height: CGFloat) {
+        bottomPopupPresentationController?.setHeight(to: height)
     }
 }
