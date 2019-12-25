@@ -28,7 +28,7 @@ class ExamplePopupViewController: BottomPopupViewController {
         return height ?? CGFloat(300)
     }
     
-    override func getPopupTopCornerRadius() -> CGFloat {
+    override func getPopupCornerRadius() -> CGFloat {
         return topCornerRadius ?? CGFloat(10)
     }
     

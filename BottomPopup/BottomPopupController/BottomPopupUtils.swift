@@ -33,7 +33,7 @@ public extension BottomPopupDelegate {
 
 public protocol BottomPopupAttributesDelegate: class {
     func getPopupHeight() -> CGFloat
-    func getPopupTopCornerRadius() -> CGFloat
+    func getPopupCornerRadius() -> CGFloat
     func getPopupPresentDuration() -> Double
     func getPopupDismissDuration() -> Double
     func shouldPopupDismissInteractivelty() -> Bool

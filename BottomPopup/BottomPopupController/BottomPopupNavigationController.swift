@@ -37,8 +37,12 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        curveTopCorners()
+        curveCorners()
         popupDelegate?.bottomPopupWillAppear()
+    }
+    open override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        curveCorners()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -67,8 +71,15 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         modalPresentationStyle = .custom
     }
     
-    private func curveTopCorners() {
-        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: getPopupTopCornerRadius(), height: 0))
+    private func curveCorners() {
+        var rectCorner: UIRectCorner = .allCorners
+        switch getPosition() {
+        case .top:
+            rectCorner = [.bottomLeft, .bottomRight]
+        case .bottom:
+            rectCorner = [.topLeft, .topRight]
+        }
+        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: rectCorner, cornerRadii: CGSize(width: getPopupCornerRadius(), height: 0))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.view.bounds
         maskLayer.path = path.cgPath
@@ -85,7 +96,7 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         return BottomPopupConstants.kDefaultHeight
     }
     
-    open func getPopupTopCornerRadius() -> CGFloat {
+    open func getPopupCornerRadius() -> CGFloat {
         return BottomPopupConstants.kDefaultTopCornerRadius
     }
     
