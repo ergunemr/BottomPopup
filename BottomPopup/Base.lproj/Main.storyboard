@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ww0-1o-M9p">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ww0-1o-M9p">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +32,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fge-is-2kN">
-                                <rect key="frame" x="16" y="84" width="343" height="343.5"/>
+                                <rect key="frame" x="16" y="64" width="343" height="343.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TFu-M2-fgA">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -158,6 +157,12 @@
                                     <action selector="showNavigationControllerTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m4d-mc-CEa"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRk-50-WmY">
+                                <rect key="frame" x="0.0" y="44" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -168,6 +173,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7XI-BV-XdB" secondAttribute="trailing" id="QV7-k4-oFF"/>
                             <constraint firstItem="5o9-TU-tZF" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aek-P3-6d7"/>
                             <constraint firstItem="7XI-BV-XdB" firstAttribute="top" secondItem="5o9-TU-tZF" secondAttribute="bottom" id="c64-hg-yZx"/>
+                            <constraint firstItem="SRk-50-WmY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d3j-bn-v1Y"/>
+                            <constraint firstItem="SRk-50-WmY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ewc-fv-qev"/>
+                            <constraint firstItem="SRk-50-WmY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oBW-Da-5FQ"/>
                             <constraint firstItem="7XI-BV-XdB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oBX-uE-xa1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7XI-BV-XdB" secondAttribute="bottom" id="syr-5h-QQS"/>
                         </constraints>
@@ -198,32 +206,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your View Controller!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yi-ws-v6P">
-                                <rect key="frame" x="71.5" y="329" width="232" height="29"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzz-iz-lZp">
-                                <rect key="frame" x="304" y="40" width="51" height="29"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                <state key="normal" title="Dismiss">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismissButtonTapped:" destination="3mJ-BY-Hat" eventType="touchUpInside" id="nfy-6H-rHu"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="HEk-ob-5kz">
+                                <rect key="frame" x="0.0" y="20" width="375" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your View Controller!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4yi-ws-v6P">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="29"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzz-iz-lZp">
+                                        <rect key="frame" x="0.0" y="37" width="375" height="29"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                        <state key="normal" title="Dismiss">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissButtonTapped:" destination="3mJ-BY-Hat" eventType="touchUpInside" id="nfy-6H-rHu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.61176470588235299" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4yi-ws-v6P" firstAttribute="centerX" secondItem="5OJ-D0-52Y" secondAttribute="centerX" id="J3g-4T-Ix0"/>
-                            <constraint firstItem="5OJ-D0-52Y" firstAttribute="trailing" secondItem="Vzz-iz-lZp" secondAttribute="trailing" constant="20" id="SW7-7Q-sd8"/>
-                            <constraint firstItem="4yi-ws-v6P" firstAttribute="centerY" secondItem="5OJ-D0-52Y" secondAttribute="centerY" id="eoT-Eq-ltS"/>
-                            <constraint firstItem="Vzz-iz-lZp" firstAttribute="top" secondItem="5OJ-D0-52Y" secondAttribute="top" constant="20" id="fLd-pP-Ck4"/>
+                            <constraint firstItem="HEk-ob-5kz" firstAttribute="top" secondItem="5OJ-D0-52Y" secondAttribute="top" constant="20" id="KEh-3U-Lck"/>
+                            <constraint firstItem="HEk-ob-5kz" firstAttribute="leading" secondItem="5OJ-D0-52Y" secondAttribute="leading" id="UIB-hN-JtJ"/>
+                            <constraint firstItem="5OJ-D0-52Y" firstAttribute="trailing" secondItem="HEk-ob-5kz" secondAttribute="trailing" id="ZUa-xn-meB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5OJ-D0-52Y"/>
                     </view>
+                    <connections>
+                        <outlet property="stackView" destination="HEk-ob-5kz" id="Ruj-HF-vjU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2U-VI-ZPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Navigation Controller!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Mt-CH-4Qv">
-                                <rect key="frame" x="39" y="351" width="297.5" height="29"/>
+                                <rect key="frame" x="39" y="341" width="297.5" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -284,7 +299,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ww0-1o-M9p" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cZQ-xm-n5Y">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -302,7 +317,7 @@
                 <navigationController storyboardIdentifier="customNavController" automaticallyAdjustsScrollViewInsets="NO" id="Uy4-o4-jhz" customClass="ExampleNavigationController" customModule="BottomPopup" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7G1-Bf-ysE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

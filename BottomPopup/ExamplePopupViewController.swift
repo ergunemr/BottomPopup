@@ -15,6 +15,7 @@ class ExamplePopupViewController: BottomPopupViewController {
     var presentDuration: Double?
     var dismissDuration: Double?
     var shouldDismissInteractivelty: Bool?
+    @IBOutlet weak var stackView: UIStackView!
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -34,9 +35,16 @@ class ExamplePopupViewController: BottomPopupViewController {
     override func getPopupPresentDuration() -> Double {
         return presentDuration ?? 1.0
     }
+    override func getPosition() -> PopupPoistion {
+        return .top
+    }
     
     override func getPopupDismissDuration() -> Double {
         return dismissDuration ?? 1.0
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupHeight(to: stackView.frame.height + 100)
     }
     
     override func shouldPopupDismissInteractivelty() -> Bool {
