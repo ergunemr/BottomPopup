@@ -77,19 +77,19 @@ open class BottomPopupViewController: UIViewController, BottomPopupAttributesDel
     
     //MARK: BottomPopupAttributesDelegate Variables
     
-    open var popupHeight: CGFloat { BottomPopupConstants.kDefaultHeight }
+    open var popupHeight: CGFloat { return BottomPopupConstants.kDefaultHeight }
     
-    open var popupTopCornerRadius: CGFloat { BottomPopupConstants.kDefaultTopCornerRadius }
+    open var popupTopCornerRadius: CGFloat { return BottomPopupConstants.kDefaultTopCornerRadius }
     
-    open var popupPresentDuration: Double { BottomPopupConstants.kDefaultPresentDuration }
+    open var popupPresentDuration: Double { return BottomPopupConstants.kDefaultPresentDuration }
     
-    open var popupDismissDuration: Double { BottomPopupConstants.kDefaultDismissDuration }
+    open var popupDismissDuration: Double { return BottomPopupConstants.kDefaultDismissDuration }
     
-    open var popupShouldDismissInteractivelty: Bool { BottomPopupConstants.dismissInteractively }
+    open var popupShouldDismissInteractivelty: Bool { return BottomPopupConstants.dismissInteractively }
     
-    open var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
+    open var popupDimmingViewAlpha: CGFloat { return BottomPopupConstants.kDimmingViewDefaultAlphaValue }
     
-    open var popupShouldBeganDismiss: Bool { BottomPopupConstants.shouldBeganDismiss }
+    open var popupShouldBeganDismiss: Bool { return BottomPopupConstants.shouldBeganDismiss }
     
-    open var popupViewAccessibilityIdentifier: String { BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
+    open var popupViewAccessibilityIdentifier: String { return BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
 }

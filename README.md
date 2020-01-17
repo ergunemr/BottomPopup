@@ -2,7 +2,7 @@
 
 **BottomPopup provides a popup-like presentation style to any view controller**
 
-![](https://img.shields.io/badge/version-0.5.0-blue.svg)
+![](https://img.shields.io/badge/version-0.6.0-blue.svg)
 ![](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![](https://img.shields.io/badge/swift-4.2-orange.svg)
 ![](https://img.shields.io/badge/Contact-ergunemr%40gmail.com-yellowgreen.svg)
@@ -43,27 +43,35 @@ Then you can present your controller with native **presentViewController:animate
 
 ## Customization
 
-Bottom popup comes with couple of customizable properties. Since your view controller subclass of BottomPopupViewController now, **you can override following methods in your view controller** to change behaviour;
+Bottom popup comes with couple of customizable properties. Since your view controller subclass of BottomPopupViewController now, **you can override following properties in your view controller** to change behaviour;
 
-* **_shouldPopupDismissInteractivelty() -> Bool_**
+* **_popupShouldDismissInteractivelty: Bool_**
   
-  Determines your popup should dismiss whether interactively or not. If it is set to yes, user can dismiss popup with pulling down it down. Default is YES
-* **_getPopupHeight() -> CGFloat_**
+  Determines the popup should dismiss whether interactively or not. If it is set to yes, user can dismiss popup with pulling down it down. Default is YES
+* **_popupHeight: BOOL_**
   
   Height value. Default is 377 pt. For example you can return UIScreen.main.bounds.size.height to give it full screen height.
-* **_getPopupTopCornerRadius() -> CGFloat_**
+* **_popupTopCornerRadius: BOOL_**
   
   Corner radius of popup. Default is 10pt
-* **_getPopupPresentDuration() -> Double_**
+* **_popupPresentDuration: Double_**
    
    Present animation duration. Default is 0.5 sec
-* **_getPopupDismissDuration() -> Double_**
+* **_popupDismissDuration: Double_**
    
    Dismiss animation duration. Default is 0.5 sec
 
-* **_getDimmingViewAlpha() -> CGFloat_**
+* **_popupDimmingViewAlpha: CGFloat_**
    
    Target alpha value of the black-colored dimming view after present animation. Default is 0.5
+
+* **_popupShouldBeganDismiss: BOOL_**
+   
+   Basically controls whether user can close the popup or not. You can change this variable at the runtime to control dismiss behaviour on spesific actions. Tap on dimming view, swipe down on dimming view and pan gesture on popup dont work if this variable set to false during these actions
+
+* **_popupViewAccessibilityIdentifier: String_**
+   
+   Accessibility identifier of popup's view. Default is _bottomPopupView_
    
    You can see how changing of these properties changes popup's behaviour below.
    (Gifs are extracted from example project)

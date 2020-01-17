@@ -18,15 +18,15 @@ class ExampleNavigationController: BottomPopupNavigationController {
     // Bottom popup attribute variables
     // You can override the desired variable to change appearance
     
-    override var popupHeight: CGFloat { height ?? CGFloat(300) }
+    override var popupHeight: CGFloat { return height ?? CGFloat(300) }
     
-    override var popupTopCornerRadius: CGFloat { topCornerRadius ?? CGFloat(10) }
+    override var popupTopCornerRadius: CGFloat { return topCornerRadius ?? CGFloat(10) }
     
-    override var popupPresentDuration: Double { presentDuration ?? 1.0 }
+    override var popupPresentDuration: Double { return presentDuration ?? 1.0 }
     
-    override var popupDismissDuration: Double { dismissDuration ?? 1.0 }
+    override var popupDismissDuration: Double { return dismissDuration ?? 1.0 }
     
-    override var popupShouldDismissInteractivelty: Bool { shouldDismissInteractivelty ?? true }
+    override var popupShouldDismissInteractivelty: Bool { return shouldDismissInteractivelty ?? true }
     
-    override var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
+    override var popupDimmingViewAlpha: CGFloat { return BottomPopupConstants.kDimmingViewDefaultAlphaValue }
 }
