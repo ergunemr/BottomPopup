@@ -36,6 +36,7 @@ public protocol BottomPopupAttributesDelegate: class {
     var popupShouldDismissInteractivelty: Bool { get }
     var popupDimmingViewAlpha: CGFloat { get }
     var popupShouldBeganDismiss: Bool { get }
+    var popupViewAccessibilityIdentifier: String { get }
 }
 
 public struct BottomPopupConstants {
@@ -46,4 +47,5 @@ public struct BottomPopupConstants {
     static let dismissInteractively = true
     static let shouldBeganDismiss = true
     static let kDimmingViewDefaultAlphaValue: CGFloat = 0.5
+    static let defaultPopupViewAccessibilityIdentifier: String = "bottomPopupView"
 }

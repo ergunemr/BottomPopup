@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomPopupPresentationController: UIPresentationController {
+final class BottomPopupPresentationController: UIPresentationController {
     private var dimmingView: UIView!
     private unowned var attributesDelegate: BottomPopupAttributesDelegate
     
@@ -49,10 +49,12 @@ class BottomPopupPresentationController: UIPresentationController {
     }
     
     @objc private func handleTap(_ tap: UITapGestureRecognizer) {
+        guard attributesDelegate.popupShouldBeganDismiss else { return }
         presentedViewController.dismiss(animated: true, completion: nil)
     }
     
     @objc private func handleSwipe(_ swipe: UISwipeGestureRecognizer) {
+        guard attributesDelegate.popupShouldBeganDismiss else { return }
         presentedViewController.dismiss(animated: true, completion: nil)
     }
 }

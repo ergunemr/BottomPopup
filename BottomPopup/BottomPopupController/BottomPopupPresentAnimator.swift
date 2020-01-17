@@ -8,8 +8,7 @@
 
 import UIKit
 
-class BottomPopupPresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
-    
+final class BottomPopupPresentAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     private unowned var attributesOwner: BottomPresentableViewController
     
     init(attributesOwner: BottomPresentableViewController) {

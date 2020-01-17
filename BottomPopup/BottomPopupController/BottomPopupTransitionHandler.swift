@@ -8,8 +8,7 @@
 
 import UIKit
 
-class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDelegate {
-    
+final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDelegate {
     private let presentAnimator: BottomPopupPresentAnimator
     private let dismissAnimator: BottomPopupDismissAnimator
     private var interactionController: BottomPopupDismissInteractionController?

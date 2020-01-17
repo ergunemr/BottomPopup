@@ -32,7 +32,7 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         
         transitionHandler?.notifyViewLoaded(withPopupDelegate: popupDelegate)
         popupDelegate?.bottomPopupViewLoaded()
-        self.view.accessibilityIdentifier = "bottomPopupNavigationView"
+        self.view.accessibilityIdentifier = popupViewAccessibilityIdentifier
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -91,4 +91,6 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     open var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
     
     open var popupShouldBeganDismiss: Bool { BottomPopupConstants.shouldBeganDismiss }
+    
+    open var popupViewAccessibilityIdentifier: String { BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
 }
