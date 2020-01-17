@@ -28,7 +28,7 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     //MARK: Public
     func notifyViewLoaded(withPopupDelegate delegate: BottomPopupDelegate?) {
         self.popupDelegate = delegate
-        if popupViewController.shouldPopupDismissInteractivelty() {
+        if popupViewController.popupShouldDismissInteractivelty {
             interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController)
             interactionController?.delegate = self
         }
@@ -36,7 +36,7 @@ class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDeleg
     
     //MARK: Specific animators
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: popupViewController.getPopupHeight(), andDimmingViewAlpha: popupViewController.getDimmingViewAlpha())
+        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, usingHeight: popupViewController.popupHeight, andDimmingViewAlpha: popupViewController.popupDimmingViewAlpha)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

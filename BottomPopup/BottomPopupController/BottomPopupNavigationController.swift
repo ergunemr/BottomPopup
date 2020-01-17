@@ -69,36 +69,24 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     }
     
     private func curveTopCorners() {
-        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: getPopupTopCornerRadius(), height: 0))
+        let path = UIBezierPath(roundedRect: self.view.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: popupTopCornerRadius, height: 0))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.view.bounds
         maskLayer.path = path.cgPath
         self.view.layer.mask = maskLayer
     }
     
-    //MARK: BottomPopupAttributesDelegate Methods
+    //MARK: BottomPopupAttributesDelegate Variables
     
-    open func shouldPopupDismissInteractivelty() -> Bool {
-        return BottomPopupConstants.dismissInteractively
-    }
+    open var popupHeight: CGFloat { BottomPopupConstants.kDefaultHeight }
     
-    open func getPopupHeight() -> CGFloat {
-        return BottomPopupConstants.kDefaultHeight
-    }
+    open var popupTopCornerRadius: CGFloat { BottomPopupConstants.kDefaultTopCornerRadius }
     
-    open func getPopupTopCornerRadius() -> CGFloat {
-        return BottomPopupConstants.kDefaultTopCornerRadius
-    }
+    open var popupPresentDuration: Double { BottomPopupConstants.kDefaultPresentDuration }
     
-    open func getPopupPresentDuration() -> Double {
-        return BottomPopupConstants.kDefaultPresentDuration
-    }
+    open var popupDismissDuration: Double { BottomPopupConstants.kDefaultDismissDuration }
     
-    open func getPopupDismissDuration() -> Double {
-        return BottomPopupConstants.kDefaultDismissDuration
-    }
+    open var popupShouldDismissInteractivelty: Bool { BottomPopupConstants.dismissInteractively }
     
-    open func getDimmingViewAlpha() -> CGFloat {
-        return BottomPopupConstants.kDimmingViewDefaultAlphaValue
-    }
+    open var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
 }

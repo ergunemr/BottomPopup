@@ -20,26 +20,18 @@ class ExamplePopupViewController: BottomPopupViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    // Bottom popup attribute methods
-    // You can override the desired method to change appearance
+    // Bottom popup attribute variables
+    // You can override the desired variable to change appearance
     
-    override func getPopupHeight() -> CGFloat {
-        return height ?? CGFloat(300)
-    }
+    override var popupHeight: CGFloat { height ?? CGFloat(300) }
     
-    override func getPopupTopCornerRadius() -> CGFloat {
-        return topCornerRadius ?? CGFloat(10)
-    }
+    override var popupTopCornerRadius: CGFloat { topCornerRadius ?? CGFloat(10) }
     
-    override func getPopupPresentDuration() -> Double {
-        return presentDuration ?? 1.0
-    }
+    override var popupPresentDuration: Double { presentDuration ?? 1.0 }
     
-    override func getPopupDismissDuration() -> Double {
-        return dismissDuration ?? 1.0
-    }
+    override var popupDismissDuration: Double { dismissDuration ?? 1.0 }
     
-    override func shouldPopupDismissInteractivelty() -> Bool {
-        return shouldDismissInteractivelty ?? true
-    }
+    override var popupShouldDismissInteractivelty: Bool { shouldDismissInteractivelty ?? true }
+    
+    override var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
 }
