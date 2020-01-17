@@ -9,14 +9,12 @@
 import UIKit
 
 class BottomPopupPresentationController: UIPresentationController {
-    
-    fileprivate var dimmingView: UIView!
-    fileprivate let popupHeight: CGFloat
-    fileprivate let dimmingViewAlpha: CGFloat
+    private var dimmingView: UIView!
+    private unowned var attributesDelegate: BottomPopupAttributesDelegate
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
-            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
+            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - attributesDelegate.popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: attributesDelegate.popupHeight))
         }
     }
     
@@ -31,9 +29,8 @@ class BottomPopupPresentationController: UIPresentationController {
         })
     }
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, usingHeight height: CGFloat, andDimmingViewAlpha dimmingAlpha: CGFloat) {
-        self.popupHeight = height
-        self.dimmingViewAlpha = dimmingAlpha
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, attributesDelegate: BottomPopupAttributesDelegate) {
+        self.attributesDelegate = attributesDelegate
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -44,7 +41,7 @@ class BottomPopupPresentationController: UIPresentationController {
     
     override func presentationTransitionWillBegin() {
         containerView?.insertSubview(dimmingView, at: 0)
-        changeDimmingViewAlphaAlongWithAnimation(to: dimmingViewAlpha)
+        changeDimmingViewAlphaAlongWithAnimation(to: attributesDelegate.popupDimmingViewAlpha)
     }
     
     override func dismissalTransitionWillBegin() {
