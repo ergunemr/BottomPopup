@@ -28,7 +28,7 @@ final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitionin
     func notifyViewLoaded(withPopupDelegate delegate: BottomPopupDelegate?) {
         self.popupDelegate = delegate
         if popupViewController.popupShouldDismissInteractivelty {
-            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController)
+            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController, attributesDelegate: popupViewController)
             interactionController?.delegate = self
         }
     }
