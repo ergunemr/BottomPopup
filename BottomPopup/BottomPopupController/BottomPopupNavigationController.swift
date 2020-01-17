@@ -89,4 +89,6 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     open var popupShouldDismissInteractivelty: Bool { BottomPopupConstants.dismissInteractively }
     
     open var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.kDimmingViewDefaultAlphaValue }
+    
+    open var popupShouldBeganDismiss: Bool { BottomPopupConstants.shouldBeganDismiss }
 }
