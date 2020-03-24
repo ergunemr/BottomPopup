@@ -26,6 +26,12 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         
         initialize()
     }
+
+    required public override init(rootViewController: UIViewController) {
+        super.init(rootViewController: rootViewController)
+
+        initialize()
+    }
     
     open override func viewDidLoad() {
         super.viewDidLoad()
