@@ -14,7 +14,7 @@ final class BottomPopupPresentationController: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
-            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - attributesDelegate.popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: attributesDelegate.popupHeight))
+            return CGRect(origin: CGPoint(x: 0, y: containerView!.bounds.size.height - attributesDelegate.popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: attributesDelegate.popupHeight))
         }
     }
     
