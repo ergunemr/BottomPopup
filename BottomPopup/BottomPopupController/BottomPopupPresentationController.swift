@@ -10,11 +10,12 @@ import UIKit
 
 final class BottomPopupPresentationController: UIPresentationController {
     private var dimmingView: UIView!
+    private var popupHeight: CGFloat
     private unowned var attributesDelegate: BottomPopupAttributesDelegate
     
     override var frameOfPresentedViewInContainerView: CGRect {
         get {
-            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - attributesDelegate.popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: attributesDelegate.popupHeight))
+            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
         }
     }
     
@@ -31,6 +32,7 @@ final class BottomPopupPresentationController: UIPresentationController {
     
     init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, attributesDelegate: BottomPopupAttributesDelegate) {
         self.attributesDelegate = attributesDelegate
+        popupHeight = attributesDelegate.popupHeight
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
     }
@@ -71,3 +73,12 @@ private extension BottomPopupPresentationController {
         [tapGesture, swipeGesture].forEach { dimmingView.addGestureRecognizer($0) }
     }
 }
+
+extension BottomPopupPresentationController {
+     func setHeight(to height: CGFloat) {
+        popupHeight = height
+        UIView.animate(withDuration: attributesDelegate.popupPresentDuration) {
+            self.containerViewWillLayoutSubviews()
+        }
+     }
+ }

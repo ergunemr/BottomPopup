@@ -94,3 +94,9 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     
     open var popupViewAccessibilityIdentifier: String { return BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
 }
+
+extension BottomPopupNavigationController {
+    open func updatePopupHeight(to height: CGFloat) {
+        transitionHandler?.setHeight(to: height)
+    }
+}

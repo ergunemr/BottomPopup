@@ -12,9 +12,9 @@ final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitionin
     private let presentAnimator: BottomPopupPresentAnimator
     private let dismissAnimator: BottomPopupDismissAnimator
     private var interactionController: BottomPopupDismissInteractionController?
+    private var bottomPopupPresentationController: BottomPopupPresentationController?
     private unowned var popupViewController: BottomPresentableViewController
     fileprivate weak var popupDelegate: BottomPopupDelegate?
-    
     var isInteractiveDismissStarted = false
     
     init(popupViewController: BottomPresentableViewController) {
@@ -35,7 +35,8 @@ final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitionin
     
     //MARK: Specific animators
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, attributesDelegate: popupViewController)
+        bottomPopupPresentationController = BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, attributesDelegate: popupViewController)
+        return bottomPopupPresentationController
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -56,3 +57,8 @@ extension BottomPopupTransitionHandler: BottomPopupDismissInteractionControllerD
         popupDelegate?.bottomPopupDismissInteractionPercentChanged(from: oldValue, to: newValue)
     }
 }
+extension BottomPopupTransitionHandler {
+     func setHeight(to height: CGFloat) {
+         bottomPopupPresentationController?.setHeight(to: height)
+     }
+ }
