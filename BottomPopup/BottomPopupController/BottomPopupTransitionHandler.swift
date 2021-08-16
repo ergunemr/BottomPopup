@@ -44,6 +44,7 @@ final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitionin
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        bottomPopupPresentationController = nil
         return dismissAnimator
     }
     
