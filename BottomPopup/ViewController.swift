@@ -9,13 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var heightSlider: UISlider!
     @IBOutlet weak var topCornerRadiusSlider: UISlider!
     @IBOutlet weak var presentDurationSlider: UISlider!
     @IBOutlet weak var dismissDurationSlider: UISlider!
     @IBOutlet weak var dismissInteractivelySwitch: UISwitch!
-    
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var topCornerRadiusLabel: UILabel!
     @IBOutlet weak var presentDurationLabel: UILabel!
@@ -79,14 +77,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showViewControllerTapped(_ sender: UIButton) {
-        guard let popupVC = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? ExamplePopupViewController else { return }
-        popupVC.height = height
-        popupVC.topCornerRadius = topCornerRadius
-        popupVC.presentDuration = presentDuration
-        popupVC.dismissDuration = dismissDuration
-        popupVC.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
-        popupVC.popupDelegate = self
-        present(popupVC, animated: true, completion: nil)
+        guard let popupViewController = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? ExamplePopupViewController else { return }
+        popupViewController.height = height
+        popupViewController.topCornerRadius = topCornerRadius
+        popupViewController.presentDuration = presentDuration
+        popupViewController.dismissDuration = dismissDuration
+        popupViewController.shouldDismissInteractivelty = dismissInteractivelySwitch.isOn
+        popupViewController.popupDelegate = self
+        present(popupViewController, animated: true, completion: nil)
     }
     
     @IBAction func showNavigationControllerTapped(_ sender: UIButton) {

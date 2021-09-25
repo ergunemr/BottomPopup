@@ -9,56 +9,54 @@
 import UIKit
 
 final class BottomPopupTransitionHandler: NSObject, UIViewControllerTransitioningDelegate {
+    private weak var popupDelegate: BottomPopupDelegate?
+    private weak var popupViewController: BottomPresentableViewController?
     private let presentAnimator: BottomPopupPresentAnimator
     private let dismissAnimator: BottomPopupDismissAnimator
     private var interactionController: BottomPopupDismissInteractionController?
-    private var bottomPopupPresentationController: BottomPopupPresentationController?
-    private unowned var popupViewController: BottomPresentableViewController
-    fileprivate weak var popupDelegate: BottomPopupDelegate?
-    var isInteractiveDismissStarted = false
     
-    init(popupViewController: BottomPresentableViewController) {
+    init(popupViewController: BottomPresentableViewController, popupDelegate: BottomPopupDelegate?) {
         self.popupViewController = popupViewController
-        
+        self.popupDelegate = popupDelegate
         presentAnimator = BottomPopupPresentAnimator(attributesOwner: popupViewController)
         dismissAnimator = BottomPopupDismissAnimator(attributesOwner: popupViewController)
     }
     
     //MARK: Public
-    func notifyViewLoaded(withPopupDelegate delegate: BottomPopupDelegate?) {
-        self.popupDelegate = delegate
-        if popupViewController.popupShouldDismissInteractivelty {
-            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController, attributesDelegate: popupViewController)
-            interactionController?.delegate = self
+    func notifyViewLoaded() {
+        if let popupViewController = popupViewController, popupViewController.popupShouldDismissInteractivelty {
+            interactionController = BottomPopupDismissInteractionController(presentedViewController: popupViewController, delegate: self, attributesDelegate: popupViewController)
         }
+    }
+
+    func setHeight(to height: CGFloat) {
+        guard let presentationController = popupViewController?.presentationController as? BottomPopupPresentationController else { return }
+        presentationController.setHeight(to: height)
     }
     
     //MARK: Specific animators
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        bottomPopupPresentationController = BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, attributesDelegate: popupViewController)
-        return bottomPopupPresentationController
+        guard let popupViewController = popupViewController else { return nil }
+        return BottomPopupPresentationController(presentedViewController: presented, presenting: presenting, attributesDelegate: popupViewController)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return presentAnimator
+        presentAnimator
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return dismissAnimator
+        dismissAnimator
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return isInteractiveDismissStarted ? interactionController : nil
+        guard let interactionController = interactionController, interactionController.isInteractiveDismissStarted else { return nil }
+        return interactionController
     }
 }
 
+// MARK: - BottomPopupDismissInteractionControllerDelegate
 extension BottomPopupTransitionHandler: BottomPopupDismissInteractionControllerDelegate {
     func dismissInteractionPercentChanged(from oldValue: CGFloat, to newValue: CGFloat) {
         popupDelegate?.bottomPopupDismissInteractionPercentChanged(from: oldValue, to: newValue)
     }
 }
-extension BottomPopupTransitionHandler {
-     func setHeight(to height: CGFloat) {
-         bottomPopupPresentationController?.setHeight(to: height)
-     }
- }

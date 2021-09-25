@@ -9,7 +9,6 @@
 import UIKit
 
 open class BottomPopupNavigationController: UINavigationController, BottomPopupAttributesDelegate {
-    
     private var transitionHandler: BottomPopupTransitionHandler?
     open weak var popupDelegate: BottomPopupDelegate?
     
@@ -29,8 +28,7 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        
-        transitionHandler?.notifyViewLoaded(withPopupDelegate: popupDelegate)
+        transitionHandler?.notifyViewLoaded()
         popupDelegate?.bottomPopupViewLoaded()
         self.view.accessibilityIdentifier = popupViewAccessibilityIdentifier
     }
@@ -63,7 +61,7 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
     //MARK: Private Methods
     
     private func initialize() {
-        transitionHandler = BottomPopupTransitionHandler(popupViewController: self)
+        transitionHandler = BottomPopupTransitionHandler(popupViewController: self, popupDelegate: popupDelegate)
         transitioningDelegate = transitionHandler
         modalPresentationStyle = .custom
     }
@@ -76,23 +74,15 @@ open class BottomPopupNavigationController: UINavigationController, BottomPopupA
         self.view.layer.mask = maskLayer
     }
     
-    //MARK: BottomPopupAttributesDelegate Variables
-    
-    open var popupHeight: CGFloat { return BottomPopupConstants.kDefaultHeight }
-    
-    open var popupTopCornerRadius: CGFloat { return BottomPopupConstants.kDefaultTopCornerRadius }
-    
-    open var popupPresentDuration: Double { return BottomPopupConstants.kDefaultPresentDuration }
-    
-    open var popupDismissDuration: Double { return BottomPopupConstants.kDefaultDismissDuration }
-    
-    open var popupShouldDismissInteractivelty: Bool { return BottomPopupConstants.dismissInteractively }
-    
-    open var popupDimmingViewAlpha: CGFloat { return BottomPopupConstants.kDimmingViewDefaultAlphaValue }
-    
-    open var popupShouldBeganDismiss: Bool { return BottomPopupConstants.shouldBeganDismiss }
-    
-    open var popupViewAccessibilityIdentifier: String { return BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
+    // MARK: - BottomPopupAttributesDelegate Variables
+    open var popupHeight: CGFloat { BottomPopupConstants.defaultHeight }
+    open var popupTopCornerRadius: CGFloat { BottomPopupConstants.defaultTopCornerRadius }
+    open var popupPresentDuration: Double { BottomPopupConstants.defaultPresentDuration }
+    open var popupDismissDuration: Double { BottomPopupConstants.defaultDismissDuration }
+    open var popupShouldDismissInteractivelty: Bool { BottomPopupConstants.dismissInteractively }
+    open var popupDimmingViewAlpha: CGFloat { BottomPopupConstants.dimmingViewDefaultAlphaValue }
+    open var popupShouldBeganDismiss: Bool { BottomPopupConstants.shouldBeganDismiss }
+    open var popupViewAccessibilityIdentifier: String { BottomPopupConstants.defaultPopupViewAccessibilityIdentifier }
 }
 
 extension BottomPopupNavigationController {

@@ -16,7 +16,7 @@ final class BottomPopupPresentAnimator: NSObject, UIViewControllerAnimatedTransi
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return attributesOwner.popupPresentDuration
+        attributesOwner.popupPresentDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
