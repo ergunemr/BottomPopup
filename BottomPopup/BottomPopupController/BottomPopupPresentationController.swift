@@ -14,9 +14,7 @@ final class BottomPopupPresentationController: UIPresentationController {
     private unowned var attributesDelegate: BottomPopupAttributesDelegate
     
     override var frameOfPresentedViewInContainerView: CGRect {
-        get {
-            return CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
-        }
+        CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - popupHeight), size: CGSize(width: presentedViewController.view.frame.size.width, height: popupHeight))
     }
     
     private func changeDimmingViewAlphaAlongWithAnimation(to alpha: CGFloat) {
@@ -49,6 +47,13 @@ final class BottomPopupPresentationController: UIPresentationController {
     override func dismissalTransitionWillBegin() {
         changeDimmingViewAlphaAlongWithAnimation(to: 0)
     }
+
+    func setHeight(to height: CGFloat) {
+        popupHeight = height
+        UIView.animate(withDuration: attributesDelegate.popupPresentDuration) {
+            self.containerViewWillLayoutSubviews()
+        }
+    }
     
     @objc private func handleTap(_ tap: UITapGestureRecognizer) {
         guard attributesDelegate.popupShouldBeganDismiss else { return }
@@ -73,12 +78,3 @@ private extension BottomPopupPresentationController {
         [tapGesture, swipeGesture].forEach { dimmingView.addGestureRecognizer($0) }
     }
 }
-
-extension BottomPopupPresentationController {
-     func setHeight(to height: CGFloat) {
-        popupHeight = height
-        UIView.animate(withDuration: attributesDelegate.popupPresentDuration) {
-            self.containerViewWillLayoutSubviews()
-        }
-     }
- }

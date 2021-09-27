@@ -16,7 +16,7 @@ final class BottomPopupDismissAnimator: NSObject, UIViewControllerAnimatedTransi
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return attributesOwner.popupDismissDuration
+        attributesOwner.popupDismissDuration
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {

@@ -39,13 +39,15 @@ public protocol BottomPopupAttributesDelegate: class {
     var popupViewAccessibilityIdentifier: String { get }
 }
 
-public struct BottomPopupConstants {
-    static let kDefaultHeight: CGFloat = 377.0
-    static let kDefaultTopCornerRadius: CGFloat = 10.0
-    static let kDefaultPresentDuration = 0.5
-    static let kDefaultDismissDuration = 0.5
+public enum BottomPopupConstants {
+    static let minPercentOfVisiblePartToCompleteAnimation: CGFloat = 0.5
+    static let swipeDownThreshold: CGFloat = 1000
+    static let defaultHeight: CGFloat = 377.0
+    static let defaultTopCornerRadius: CGFloat = 10.0
+    static let defaultPresentDuration = 0.5
+    static let defaultDismissDuration = 0.5
     static let dismissInteractively = true
     static let shouldBeganDismiss = true
-    static let kDimmingViewDefaultAlphaValue: CGFloat = 0.5
+    static let dimmingViewDefaultAlphaValue: CGFloat = 0.5
     static let defaultPopupViewAccessibilityIdentifier: String = "bottomPopupView"
 }

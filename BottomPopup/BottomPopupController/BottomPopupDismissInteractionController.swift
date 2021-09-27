@@ -13,29 +13,29 @@ protocol BottomPopupDismissInteractionControllerDelegate: class {
 }
 
 final class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveTransition {
-    private let kMinPercentOfVisiblePartToCompleteAnimation = CGFloat(0.5)
-    private let kSwipeDownThreshold = CGFloat(1000)
     private weak var presentedViewController: BottomPresentableViewController?
+    private weak var delegate: BottomPopupDismissInteractionControllerDelegate?
     private weak var transitioningDelegate: BottomPopupTransitionHandler?
     private unowned var attributesDelegate: BottomPopupAttributesDelegate
-    weak var delegate: BottomPopupDismissInteractionControllerDelegate?
-    
+    private (set) var isInteractiveDismissStarted: Bool = false
+
     private var currentPercent: CGFloat = 0 {
         didSet {
             delegate?.dismissInteractionPercentChanged(from: oldValue, to: currentPercent)
         }
     }
     
-    init(presentedViewController: BottomPresentableViewController?, attributesDelegate: BottomPopupAttributesDelegate) {
+    init(presentedViewController: BottomPresentableViewController?, delegate: BottomPopupDismissInteractionControllerDelegate?, attributesDelegate: BottomPopupAttributesDelegate) {
         self.presentedViewController = presentedViewController
         self.transitioningDelegate = presentedViewController?.transitioningDelegate as? BottomPopupTransitionHandler
+        self.delegate = delegate
         self.attributesDelegate = attributesDelegate
         super.init()
         preparePanGesture(in: presentedViewController?.view)
     }
     
     private func finishAnimation(withVelocity velocity: CGPoint) {
-        if currentPercent > kMinPercentOfVisiblePartToCompleteAnimation || velocity.y > kSwipeDownThreshold {
+        if currentPercent > BottomPopupConstants.minPercentOfVisiblePartToCompleteAnimation || velocity.y > BottomPopupConstants.swipeDownThreshold {
             finish()
         } else {
             cancel()
@@ -55,13 +55,13 @@ final class BottomPopupDismissInteractionController: UIPercentDrivenInteractiveT
         
         switch pan.state {
         case .began:
-            transitioningDelegate?.isInteractiveDismissStarted = true
+            isInteractiveDismissStarted = true
             presentedViewController?.dismiss(animated: true, completion: nil)
         case .changed:
             update(currentPercent)
         default:
             let velocity = pan.velocity(in: presentedViewController?.view)
-            transitioningDelegate?.isInteractiveDismissStarted = false
+            isInteractiveDismissStarted = false
             finishAnimation(withVelocity: velocity)
         }
     }
